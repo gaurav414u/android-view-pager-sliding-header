@@ -25,3 +25,10 @@ proguard/
 
 # Log Files
 *.log
+
+#MacOSX temp file
+.DS_Store
+
+# Some Studio specific files
+.idea/
+*.iml

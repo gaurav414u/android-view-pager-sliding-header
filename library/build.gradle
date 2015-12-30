@@ -4,15 +4,16 @@ apply plugin: 'com.jfrog.bintray'
 
 def versionMajor = 0
 def versionMinor = 0
-def versionPatch = 4
+def versionPatch = 6
 
 group = 'com.gauravbhola.viewpagerslidingheader' // Change this to match your package name
 version = "${versionMajor}.${versionMinor}.${versionPatch}" //
 
 def versionFinal = "${versionMajor}.${versionMinor}.${versionPatch}"
 
-def gitUrl = 'https://github.com/izacus/FuzzyDateFormatter.git'   // Git repository URL
-def siteUrl = 'https://github.com/izacus/FuzzyDateFormatter.git'   // Git repository URL
+def gitUrl = 'https://github.com/gaurav414u/ViewPagerSlidingHeader.git'   // Git repository URL
+
+def siteUrl = ''   // site url
 
 
 
@@ -21,7 +22,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
@@ -46,7 +47,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "com.gauravbhola.viewpagerslidingheader:viewpagerslidingheader"
+        name = "viewpagerslidingheader"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         version {

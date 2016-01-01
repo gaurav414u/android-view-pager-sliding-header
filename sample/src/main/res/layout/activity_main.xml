@@ -20,15 +20,22 @@
             android:cropToPadding="true"
             >
     </ImageView>
-    <android.support.v4.view.ViewPager
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/slidingtab_layout"
-            android:id="@+id/pager"
-            >
-    </android.support.v4.view.ViewPager>
 
+        <FrameLayout android:layout_width="fill_parent"
+                     android:layout_height="fill_parent"
+                     android:layout_alignParentBottom="true"
+                     android:layout_below="@+id/slidingtab_layout"
+                     android:id="@+id/container_viewpager"
+                >
+
+            <android.support.v4.view.ViewPager
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/pager"
+                    >
+            </android.support.v4.view.ViewPager>
+
+        </FrameLayout>
 
     <android.support.v7.widget.Toolbar
             android:layout_width="fill_parent"

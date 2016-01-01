@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -41,7 +40,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
     private View mSlidingTabLayout;
     private View mToolbar;
     private View mHeaderView;
-    private ViewPager mPager;
+    private View mPager;
 
     public static enum DrawerState {OPEN, CLOSED, CLOSING, OPENING};
     public static enum ActionBarState {OPEN, CLOSED, CLOSING, OPENING};
@@ -92,7 +91,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
     int mInterruptInterception = 0;
 
-    public void initHeaderViewPager(View actionBarView, View headerView, View tabView, ViewPager pager) {
+    public void initHeaderViewPager(View actionBarView, View headerView, View tabView, View pager) {
         mDrawerState = DrawerState.OPEN;
         mActionBarState = ActionBarState.OPEN;
         mSlidingTabLayout = tabView;
@@ -322,7 +321,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
         for (int i = getChildCount() - 1; 0 <= i; i--) {
             View childView = getChildAt(i);
             //only duplicating the events if the child is a ViewPager
-            if (childView != null && childView instanceof ViewPager) {
+            if (childView != null && childView == mPager) {
                 MotionEvent event = MotionEvent.obtainNoHistory(ev);
                 //doesnt matter whether this touch lies in the child rect or not
                 /*

@@ -18,6 +18,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity implements SlidingHeaderCallbacks, SlidingHeaderActivityCallbacks {
     Toolbar mToolbar;
     ViewPager mPager;
+    View mPagerContainer;
     SlidingTabLayout mSlidingTabLayout;
     View mImageView;
     ViewPagerSlidingHeaderRootView mRootView;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements SlidingHeaderCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPager = (ViewPager) findViewById(R.id.pager);
+        mPagerContainer = findViewById(R.id.container_viewpager);
         mPager.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
         ;
         mRootView = (ViewPagerSlidingHeaderRootView) findViewById(R.id.view_root);
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements SlidingHeaderCall
 
         setupActionBar();
         setupViewPager();
-        mRootView.initHeaderViewPager(mToolbar, mImageView, mSlidingTabLayout, mPager);
+        mRootView.initHeaderViewPager(mToolbar, mImageView, mSlidingTabLayout, mPagerContainer);
         mRootView.registerHeaderListener(new ViewPagerSlidingHeaderRootView.HeaderSlideListener() {
             @Override
             public void onOpenPercentChanged(int openPercent) {

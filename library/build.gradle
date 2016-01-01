@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 
 def versionMajor = 0
 def versionMinor = 0
-def versionPatch = 6
+def versionPatch = 7
 
 group = 'com.gauravbhola.viewpagerslidingheader' // Change this to match your package name
 version = "${versionMajor}.${versionMinor}.${versionPatch}" //

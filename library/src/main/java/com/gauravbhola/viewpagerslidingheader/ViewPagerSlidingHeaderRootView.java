@@ -5,7 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +26,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
     private float mTranslationYLowerBoundActionBar;
     private float mTranslationYUpperBound;
     private float mTranslationYLowerBound;
+    private float mParallaxFactor = 1;
     int mPrevYintercepted;
     int mPrevXintercepted;
 
@@ -47,6 +47,14 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
     private DrawerState mDrawerState;
     private ActionBarState mActionBarState;
+
+    public float getParallaxFactor() {
+        return mParallaxFactor;
+    }
+
+    public void setParallaxFactor(float parallaxFactor) {
+        mParallaxFactor = parallaxFactor;
+    }
 
     public static abstract class HeaderSlideListener {
         //goes from 100 to 0 when the header closes or is in midway
@@ -71,7 +79,6 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
     public void registerHeaderListener(HeaderSlideListener listener) {
         mHeaderListener = listener;
     }
-
 
     public ViewPagerSlidingHeaderRootView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -120,17 +127,11 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
                         LayoutParams.WRAP_CONTENT,
                         LayoutParams.WRAP_CONTENT);
 
-                int statusBarHeight = 0;
-                int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-                if (resourceId > 0) {
-                    statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-                }
-
                 int height = 0;
                 if (mToolbar == null) {
                     height = mPager.getHeight() + mHeaderView.getHeight();
                 } else {
-                    height = getResources().getDisplayMetrics().heightPixels - statusBarHeight - mSlidingTabLayout.getHeight();
+                    height = getHeight() - mSlidingTabLayout.getHeight();
                 }
 
                 int viewPagerWidth = mPager.getWidth();
@@ -251,7 +252,6 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            Log.d(this.getClass().getName(), "action = " + event.getActionMasked());
             if (event.getActionMasked() == MotionEvent.ACTION_MOVE) {
                 float y = event.getY();
                 mTouchDy = y - prevY;
@@ -399,7 +399,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
         }
 
         mSlidingTabLayout.setTranslationY(translationY);
-        mHeaderView.setTranslationY(translationY / 3);
+        mHeaderView.setTranslationY(translationY / mParallaxFactor);
         mHeaderView.requestLayout();
         mPager.setTranslationY(getPagerDeviation() + translationY);
 
@@ -430,7 +430,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
         float translationY = (mSlidingTabLayout.getTranslationY() + dy);
         translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBoundActionBar, mTranslationYUpperBoundActionBar);
         mSlidingTabLayout.setTranslationY(translationY);
-        mHeaderView.setTranslationY(translationY / 3);
+        mHeaderView.setTranslationY(translationY / mParallaxFactor);
 
         if (mToolbar != null) {
             float translationYActionbar = ScrollUtils.getFloat(mToolbar.getTranslationY() + dy, -getActionBarHeight(), 0);
@@ -536,7 +536,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
                 "translationY",
-                mHeaderView.getTranslationY(), translationY / 3);
+                mHeaderView.getTranslationY(), translationY / mParallaxFactor);
 
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(mSlidingTabLayout,
                 "translationY",
@@ -611,7 +611,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
                 "translationY",
-                mHeaderView.getTranslationY(), translationY / 3);
+                mHeaderView.getTranslationY(), translationY / mParallaxFactor);
 
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(mSlidingTabLayout,
                 "translationY",

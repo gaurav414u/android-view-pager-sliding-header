@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SlidingHeaderCall
         setupActionBar();
         setupViewPager();
         mRootView.initHeaderViewPager(mToolbar, mImageView, mSlidingTabLayout, mPagerContainer);
+        mRootView.setParallaxFactor(4);
         mRootView.registerHeaderListener(new ViewPagerSlidingHeaderRootView.HeaderSlideListener() {
             @Override
             public void onOpenPercentChanged(int openPercent) {

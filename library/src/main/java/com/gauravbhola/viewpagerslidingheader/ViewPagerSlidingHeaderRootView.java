@@ -59,6 +59,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
     public static abstract class HeaderSlideListener {
         //goes from 100 to 0 when the header closes or is in midway
         private int openPercent;
+        private View mSlidingTabLayout;
 
         private int getOpenPercent() {
             return openPercent;
@@ -66,10 +67,10 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
         public void setOpenPercent(int openPercent) {
             this.openPercent = openPercent;
-            onOpenPercentChanged(openPercent);
+            onOpenPercentChanged(openPercent, (mSlidingTabLayout == null) ? 0 : mSlidingTabLayout.getTranslationY());
         }
 
-        public abstract void onOpenPercentChanged(int mOpenPercent);
+        public abstract void onOpenPercentChanged(int openPercent, float slidingTabTranslation);
     }
 
     public void registerCallbacks(SlidingHeaderCallbacks callbacks) {
@@ -78,6 +79,7 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
 
     public void registerHeaderListener(HeaderSlideListener listener) {
         mHeaderListener = listener;
+        mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
     }
 
     public ViewPagerSlidingHeaderRootView(Context context, AttributeSet attrs) {
@@ -105,6 +107,9 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
         mToolbar = actionBarView;
         mHeaderView = headerView;
         mPager = pager;
+        if (mHeaderListener != null) {
+            mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
+        }
 
 
         mHeaderView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -394,11 +399,10 @@ public class ViewPagerSlidingHeaderRootView extends RelativeLayout {
         float translationY = (mSlidingTabLayout.getTranslationY() + dy);
         translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBound, mTranslationYUpperBound);
 
+        mSlidingTabLayout.setTranslationY(translationY);
         if (mHeaderListener != null) {
             mHeaderListener.setOpenPercent((int) (100 - 100 * (translationY / mTranslationYLowerBound)));
         }
-
-        mSlidingTabLayout.setTranslationY(translationY);
         mHeaderView.setTranslationY(translationY / mParallaxFactor);
         mHeaderView.requestLayout();
         mPager.setTranslationY(getPagerDeviation() + translationY);

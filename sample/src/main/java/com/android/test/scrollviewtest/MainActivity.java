@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity implements SlidingHeaderCall
         mRootView.setParallaxFactor(4);
         mRootView.registerHeaderListener(new ViewPagerSlidingHeaderRootView.HeaderSlideListener() {
             @Override
-            public void onOpenPercentChanged(int openPercent) {
+            public void onOpenPercentChanged(int openPercent, float translationY) {
                 L.d("openPercent = " + openPercent);
+                L.d("translation = " + translationY);
             }
         });
     }

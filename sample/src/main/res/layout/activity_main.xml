@@ -1,59 +1,38 @@
-<com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/view_root"
-        android:background="#000000"
-        tools:context="com.android.test.scrollviewtest.MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="40dp"
+        >
 
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:gravity="center">
 
-    <ImageView
-            android:layout_width="fill_parent"
-            android:layout_marginTop="@dimen/abc_action_bar_default_height_material"
-            android:layout_height="220dp"
-            android:background="@color/primary"
-            android:id="@+id/image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/sample_cover"
-            android:cropToPadding="true"
-            >
-    </ImageView>
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sliding Drawer with Sliding action bar"
+                android:onClick="openSlidingDrawerWithSlidingActionBar"
+                />
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sliding Drawer without Slding action bar"
+                android:onClick="openSlidingDrawerWithoutSlidingActionBar"
+                />
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sliding Drawer with transparent action bar"
+                android:onClick="openSlidingDrawerWithTransparentActionBar"
+                />
+        <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sliding Drawer without action bar"
+                android:onClick="openSlidingDrawerWithoutActionBar"
+                />
 
-        <FrameLayout android:layout_width="fill_parent"
-                     android:layout_height="fill_parent"
-                     android:layout_alignParentBottom="true"
-                     android:layout_below="@+id/slidingtab_layout"
-                     android:id="@+id/container_viewpager"
-                >
-
-            <android.support.v4.view.ViewPager
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/pager"
-                    >
-            </android.support.v4.view.ViewPager>
-
-        </FrameLayout>
-
-    <android.support.v7.widget.Toolbar
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/action_bar_height"
-            android:id="@+id/action_toolbar"
-            android:background="@color/primary"
-            app:elevation="6dp"
-            android:elevation="10dp"
-            >
-    </android.support.v7.widget.Toolbar>
-
-    <com.android.test.scrollviewtest.SlidingTabLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/abc_action_bar_default_height_material"
-            android:layout_below="@+id/image"
-            android:id="@+id/slidingtab_layout"
-            android:elevation="10dp"
-            android:background="@color/primary"
-            >
-    </com.android.test.scrollviewtest.SlidingTabLayout>
-</com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView>
+    </LinearLayout>
+</ScrollView>

@@ -15,6 +15,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SimpleSlidingDrawerWithActionBarSliding"
+            android:label="@string/title_activity_main" >
+        </activity>
+
+        <activity
+                android:name=".SlidingDrawerWithoutActionBarSliding"
+                android:label="@string/title_activity_main" >
+        </activity>
+
+        <activity
+                android:name=".SlidingDrawerWithTransparentActionBarActivity"
+                android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+                android:name=".SlidingDrawerWithoutActionBar"
+                android:label="@string/title_activity_main" >
+        </activity>
     </application>
 
 </manifest>

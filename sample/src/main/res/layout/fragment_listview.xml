@@ -12,4 +12,4 @@
         android:clipToPadding="false"
         android:scrollbars="vertical"
         android:fadeScrollbars="true"
-        tools:context=".MainActivity" />
+        tools:context=".SimpleSlidingDrawerWithActionBarSliding" />

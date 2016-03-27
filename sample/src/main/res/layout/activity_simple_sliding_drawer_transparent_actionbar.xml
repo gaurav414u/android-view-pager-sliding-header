@@ -58,7 +58,6 @@
             android:layout_height="@dimen/abc_action_bar_default_height_material"
             android:layout_below="@+id/image"
             android:id="@+id/slidingtab_layout"
-            android:elevation="10dp"
             android:background="@color/primary"
             >
     </com.android.test.scrollviewtest.SlidingTabLayout>

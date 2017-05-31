@@ -33,7 +33,7 @@ Then, click "sync" button to get the library using the configuration above.
 //All this stuff will be in reference to SampleApp's SimpleSlidingDrawerWithActionBarSliding
 ```
 
-After adding the dependency, let's write layout file such as `res/layout/activity_simple_sliding_drawer`.
+After adding the dependency, let's write layout file such as [res/layout/activity_simple_sliding_drawer.xml](https://github.com/gaurav414u/ViewPagerSlidingHeader/blob/master/sample/src/main/res/layout/activity_simple_sliding_drawer.xml).
 
 ```
 <com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView
@@ -154,7 +154,7 @@ public class MyAdapter extends FragmentStatePagerAdapter {
 
 ## Fragment code
 
-Please have a look at the `main/com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderFragment/ContentFragment`
+Please have a look at the [sample/src/main/java/com/android/test/scrollviewtest/ContentFragment.java](https://github.com/gaurav414u/ViewPagerSlidingHeader/blob/master/sample/src/main/java/com/android/test/scrollviewtest/ContentFragment.java)
 
 ```
 public class ContentFragment extends ViewPagerSlidingHeaderFragment {

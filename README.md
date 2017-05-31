@@ -11,7 +11,7 @@ You can get this library from jcenter
 ### build.gradle
 Write the following dependency configuration to your build.gradle
 
-```
+```java
 repositories {
     jcenter()
 }
@@ -35,7 +35,7 @@ Then, click "sync" button to get the library using the configuration above.
 
 After adding the dependency, let's write layout file such as [res/layout/activity_simple_sliding_drawer.xml](https://github.com/gaurav414u/ViewPagerSlidingHeader/blob/master/sample/src/main/res/layout/activity_simple_sliding_drawer.xml).
 
-```
+```xml
 <com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -63,7 +63,7 @@ After configuring your layout, you can write the remaining integration in Acitiv
 
 Make sure that your activity implements `SlidingHeaderCallbacks` and `SlidingHeaderActivityCallbacks`.
 
-```
+```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -86,7 +86,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ### Sliding Header View preparation
 Here `mRootView` is the instance of `com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView` which you used in your layout file and similarily, mToolbar, mImageView, mSlidingTabLayout, mPagerContainer are the views which are used in the layout file.
 
-```
+```java
 public void setupViewPager() {
     mPager.setAdapter(mAdapter);
     mSlidingTabLayout.setCustomTabView(R.layout.layout_tab_indicator, android.R.id.text1);
@@ -112,7 +112,7 @@ void prepareViewPagerSlidingHeader() {
 ```
 
 Since your activity implements `SlidingHeaderCallbacks`. You need to implement following methods like this:
-```
+```java
 @Override
 public boolean shouldDrawerMove() {
     return mAdapter.shouldDrawerMove();
@@ -125,7 +125,7 @@ public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float ve
 ```
 
 Since your activity also implements `SlidingHeaderActivityCallbacks`. You need to implement following method like this:
-```
+```java
 @Override
 public ViewPagerSlidingHeaderRootView getRootView() {
     return mRootView;
@@ -136,7 +136,7 @@ public ViewPagerSlidingHeaderRootView getRootView() {
 
 ### The Fragment Pager Adapter
 Now, make sure that the fragments you are using extend the `ViewPagerSlidingHeaderFragment`. MyAdapter should look something like this:
-```
+```java
 public class MyAdapter extends FragmentStatePagerAdapter {
     //Initialize the fragments and override the standard methods for PagerAdapter
 
@@ -156,7 +156,7 @@ public class MyAdapter extends FragmentStatePagerAdapter {
 
 Please have a look at the [sample/src/main/java/com/android/test/scrollviewtest/ContentFragment.java](https://github.com/gaurav414u/ViewPagerSlidingHeader/blob/master/sample/src/main/java/com/android/test/scrollviewtest/ContentFragment.java)
 
-```
+```java
 public class ContentFragment extends ViewPagerSlidingHeaderFragment {
     //you should ensure that this view completely fills this fragment
     ScrollView mScrollView; //this can also be an instance of RecyclerView

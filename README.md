@@ -1,6 +1,9 @@
 # ViewPagerSlidingHeader
 A very light and helpfull android library for implementing ViewPagerSlidingHeader. Explicity focussing on Youtube-Gaming-App like sliding header.
 
+![](https://raw.githubusercontent.com/gaurav414u/ViewPagerSlidingHeader/master/sample/images/demo1.gif)
+![](https://raw.githubusercontent.com/gaurav414u/ViewPagerSlidingHeader/master/sample/images/demo2.gif)
+![](https://raw.githubusercontent.com/gaurav414u/ViewPagerSlidingHeader/master/sample/images/demo3.gif)
 
 
 # Usage

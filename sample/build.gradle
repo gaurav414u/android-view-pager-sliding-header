@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.android.test.scrollviewtest"
@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
     compile project(':library')
+    //compile 'com.gauravbhola.viewpagerslidingheader:library:0.0.8'
 }
